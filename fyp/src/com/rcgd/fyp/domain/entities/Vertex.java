@@ -2,6 +2,8 @@ package com.rcgd.fyp.domain.entities;
 
 import java.util.HashMap;
 
+import com.rcgd.fyp.domain.util.DistanceUtil;
+
 /**
  * Class that represent a vertex in a graph
  * Designed to be immutable
@@ -33,15 +35,20 @@ public class Vertex implements VertexInterface {
 	}
 
 	@Override
-	public double getStraightLineDistance(VertexInterface v) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getApproximateDistance(VertexInterface v) {
+		return DistanceUtil.getApproximateDistance(
+				this.getLatLong().getLat(), this.getLatLong().getLong(),
+				v.getLatLong().getLat(), v.getLatLong().getLong());
 	}
 
 	@Override
 	public double getHaversineDistance(VertexInterface v) {
-		// TODO Auto-generated method stub
-		return 0;
+		return DistanceUtil.getHaversineDistance(
+				this.getLatLong().getLat(), this.getLatLong().getLong(),
+				v.getLatLong().getLat(), v.getLatLong().getLong());
 	}
 
+	public HashMap<String,Object> getTags() {
+		return tags;
+	}
 }

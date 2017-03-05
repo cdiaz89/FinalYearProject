@@ -9,6 +9,6 @@ public interface VertexInterface {
 
 	long getID();
 	LatLong getLatLong();
-	double getStraightLineDistance(VertexInterface v);
+	double getApproximateDistance(VertexInterface v);
 	double getHaversineDistance(VertexInterface v);
 }
