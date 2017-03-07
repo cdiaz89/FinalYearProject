@@ -1,5 +1,7 @@
 package com.rcgd.fyp.domain.util;
 
+import com.rcgd.fyp.domain.entities.Coordinates;
+
 /**
  * Static utilities to calculate distances between two points
  * @author rcgd
@@ -37,6 +39,13 @@ public final class DistanceUtil {
 		
 	}
 	
+	// overload
+	public static double getApproximateDistance(Coordinates from, Coordinates to) {
+		return getApproximateDistance(from.getLatitude(), from.getLongitude(),
+				to.getLatitude(), to.getLongitude());
+	}
+	
+	
 	/**
 	 * @param fromLat latitude of the start coordinate
 	 * @param fromLong longitude of the start coordinate
@@ -61,4 +70,11 @@ public final class DistanceUtil {
         double c = 2 * Math.asin(Math.sqrt(a));
         return earthRadius * c;
 	}
+	
+	//overload
+	public static double getHaversineDistance(Coordinates from, Coordinates to) {
+		return getHaversineDistance(from.getLatitude(), from.getLongitude(),
+				to.getLatitude(), to.getLongitude());
+	}
+	
 }

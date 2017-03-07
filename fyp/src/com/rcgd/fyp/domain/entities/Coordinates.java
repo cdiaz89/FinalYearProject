@@ -6,21 +6,21 @@ package com.rcgd.fyp.domain.entities;
  * @author rcgd
  */
 
-public class LatLong {
+public class Coordinates {
 
 	private final double latitude;
 	private final double longitude;
 	
-	public LatLong(double lat, double lng) {
+	public Coordinates(double lat, double lng) {
 		this.latitude = lat;
 		this.longitude = lng;
 	}
 	
-	public double getLat() {
+	public double getLatitude() {
 		return latitude;
 	}
 	
-	public double getLong() {
+	public double getLongitude() {
 		return longitude;
 	}
 	
@@ -29,9 +29,9 @@ public class LatLong {
 		final int oddPrime = 31;
         int result = 17;
         long tempLong;
-        tempLong = Double.doubleToLongBits(getLat());
+        tempLong = Double.doubleToLongBits(getLatitude());
         result = oddPrime * result + (int) (tempLong ^ (tempLong >>> 32));
-        tempLong = Double.doubleToLongBits(getLong());
+        tempLong = Double.doubleToLongBits(getLongitude());
         result = oddPrime * result + (int) (tempLong ^ (tempLong >>> 32));
         return result;
 	}
@@ -44,16 +44,16 @@ public class LatLong {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof LatLong)) {
+        if (!(obj instanceof Coordinates)) {
             return false;
         }
-        LatLong other = (LatLong) obj;
-        if (Double.doubleToLongBits(getLat())
-                != Double.doubleToLongBits(other.getLat())) {
+        Coordinates other = (Coordinates) obj;
+        if (Double.doubleToLongBits(getLatitude())
+                != Double.doubleToLongBits(other.getLatitude())) {
             return false;
         }
-        if (Double.doubleToLongBits(getLong())
-                != Double.doubleToLongBits(other.getLong())) {
+        if (Double.doubleToLongBits(getLongitude())
+                != Double.doubleToLongBits(other.getLongitude())) {
             return false;
         }
         return true;
@@ -61,7 +61,7 @@ public class LatLong {
 	
 	@Override
 	public String toString() {
-        return "[Latitude: " + getLat() + ", Longitude: " + getLong() + "]";
+        return "[Latitude: " + getLatitude() + ", Longitude: " + getLongitude() + "]";
     }
 	
 }

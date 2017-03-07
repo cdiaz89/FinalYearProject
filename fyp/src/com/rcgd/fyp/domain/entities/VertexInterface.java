@@ -7,8 +7,7 @@ package com.rcgd.fyp.domain.entities;
  */
 public interface VertexInterface {
 
-	long getID();
-	LatLong getLatLong();
+	Coordinates getCoordinates();
 	double getApproximateDistance(VertexInterface v);
 	double getHaversineDistance(VertexInterface v);
 }

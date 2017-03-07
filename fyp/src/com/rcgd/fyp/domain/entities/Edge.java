@@ -1,6 +1,7 @@
 package com.rcgd.fyp.domain.entities;
 
-import java.util.Set;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 /**
  * This immutable class represents an edge of a graph.
@@ -10,45 +11,104 @@ import java.util.Set;
  *
  */
 public class Edge implements EdgeInterface{
-	
-	private long id;
+
 	private Vertex startVertex;
 	private Vertex endVertex;
-	private Set<Vertex> immediateVertices;
+	private LinkedHashSet<VertexInterface> intermediateVertices;
 	
-	public Edge(long id, Vertex startVertex, Vertex endVertex,
-			Set<Vertex> immediateVertices) {
-		this.id =id;
+	public Edge(Vertex startVertex, Vertex endVertex,
+			LinkedHashSet<VertexInterface>  intermediateVertices) {
 		this.startVertex = startVertex;
 		this.endVertex = endVertex;
-		this.immediateVertices = immediateVertices;
+		this.intermediateVertices = intermediateVertices;
 	}
 	
-	@Override
-	public long getID() {
-		return id;
-	}
 	
 	@Override
-	public Vertex getStartVertex() {
-		return startVertex;
+	public VertexInterface getStartVertex() {
+		return this.startVertex;
 	}
 
 	@Override
-	public Vertex getEndVertex() {
-		return endVertex;
+	public VertexInterface getEndVertex() {
+		return this.endVertex;
+	}
+	
+	@Override
+	public LinkedHashSet<VertexInterface> getIntermediateVertices() {
+		// TODO Auto-generated method stub
+		return this.intermediateVertices;
 	}
 
 	@Override
 	public double getEdgeWeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return getDistanceFromStartToEndVertex();
+	}
+
+	private double getDistanceFromStartToEndVertex() {
+		double distance = 0;
+		LinkedHashSet<VertexInterface> vertices = this.getIntermediateVertices();
+		
+		if (vertices.size() > 0) { // there are immediate vertices		
+			Iterator<VertexInterface> it = vertices.iterator();
+			VertexInterface tmp = it.next();
+			VertexInterface next;
+			distance = this.getStartVertex()
+					.getHaversineDistance(tmp);
+			
+			while(it.hasNext()){ //more than one intermediate vertex
+				next = it.next();
+				distance += tmp.getHaversineDistance(it.next());
+				tmp = next;
+			}
+			
+			distance += tmp
+					.getHaversineDistance(this.getEndVertex());	
+		} else {
+			distance = this.getStartVertex()
+					.getHaversineDistance(this.getEndVertex());
+			if (distance == 0) {
+				// Report Error
+			};
+		}
+		return distance;
 	}
 
 	@Override
-	public Set<Vertex> getImmediateVertices() {
-		return immediateVertices;
+	public boolean isTargetVertexInEdge(VertexInterface v) {
+		// TODO Auto-generated method stub
+		return getIntermediateVertices().contains(v);
 	}
+
+	@Override
+	public double getDistanceToTargetVertex(VertexInterface v) {
+		double distance = 0;
+		LinkedHashSet<VertexInterface> vertices = this.getIntermediateVertices();
+		if (isTargetVertexInEdge(v)) {
+			// calculate distance
+			Iterator<VertexInterface> it = vertices.iterator();
+			VertexInterface tmp = it.next();
+			VertexInterface next;
+			distance = this.getStartVertex()
+					.getHaversineDistance(tmp);
+			
+			while (it.hasNext()) {
+				next = it.next();
+				distance += tmp.getHaversineDistance(it.next());
+				if (next.equals(v)) {
+					break;
+				} else {
+					tmp = next;
+				}
+			}	
+		} else if(v.equals(this.getEndVertex())) {
+			distance = getDistanceFromStartToEndVertex();
+		}
+		return distance;
+	}
+
+	
 
 	
 

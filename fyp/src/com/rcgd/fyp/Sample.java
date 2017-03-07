@@ -1,5 +1,10 @@
 package com.rcgd.fyp;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+
 import javax.swing.JFrame;
 
 import org.jxmapviewer.JXMapViewer;
@@ -8,6 +13,8 @@ import org.jxmapviewer.viewer.DefaultTileFactory;
 import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.viewer.TileFactoryInfo;
 
+import com.rcgd.fyp.domain.entities.Coordinates;
+import com.rcgd.fyp.domain.entities.IntermediateVertex;
 import com.rcgd.fyp.domain.util.DistanceUtil;
 
 
@@ -15,7 +22,7 @@ public class Sample {
 	
 	public static void main(String[] args)
 	{
-		JXMapViewer mapViewer = new JXMapViewer();
+		/*JXMapViewer mapViewer = new JXMapViewer();
 
 		// Create a TileFactoryInfo for OpenStreetMap
 		TileFactoryInfo info = new OSMTileFactoryInfo();
@@ -39,5 +46,22 @@ public class Sample {
 		frame.setVisible(true);
 		
 		System.out.println(DistanceUtil.getHaversineDistance(36.12, -86.67, 33.94, -118.40));
+		*/
+		
+		LinkedHashSet<String> h = new LinkedHashSet<String>();
+		h.add("ne");
+	//	h.add("eqdd");
+		//h.add("fslfj");
+		//h.add("fsojdff");
+		
+		Iterator it = h.iterator();
+		
+		System.out.println(it.next());
+		
+		while (it.hasNext()) {
+			System.out.println("next()");
+			System.out.println(it.next());
+		}
+		System.out.println("end");
 	}
 }

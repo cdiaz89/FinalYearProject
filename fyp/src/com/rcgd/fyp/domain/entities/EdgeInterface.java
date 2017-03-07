@@ -1,12 +1,13 @@
 package com.rcgd.fyp.domain.entities;
 
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 public interface EdgeInterface {
 
-	long getID();
-	Vertex getStartVertex();
-	Vertex getEndVertex();
+	VertexInterface getStartVertex();
+	VertexInterface getEndVertex();
+	LinkedHashSet<VertexInterface> getIntermediateVertices();
 	double getEdgeWeight();
-	Set<Vertex> getImmediateVertices(); 
+	boolean isTargetVertexInEdge(VertexInterface v);
+	double getDistanceToTargetVertex(VertexInterface v);
 }
