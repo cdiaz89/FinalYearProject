@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.rcgd.fyp.domain.util.DistanceUtil;
 
 /**
- * 
+ * Class that represents 
  * @author rcgd
  *
  */
@@ -18,8 +18,7 @@ public class Vertex extends Coordinates implements VertexInterface {
 	}
 	
 	public Vertex(double lat, double lng) {
-		super(lat, lng);
-		this.tags = null;
+		this(lat,lng,null);
 	}
 
 	@Override

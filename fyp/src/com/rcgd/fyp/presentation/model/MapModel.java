@@ -7,19 +7,14 @@ package com.rcgd.fyp.presentation.model;
 
 public class MapModel {
 
-	private int threadSize;
 	private int mapZoom;
 	private double startingLat;
 	private double startingLon;
 	
-	public MapModel() {
-		
-	}
-	
-	// builder pattern
-	
-	public int getThreadSize() {
-		return threadSize;
+	public MapModel(int mapZoom, double startingLat, double startingLon) {
+		this.mapZoom = mapZoom;
+		this.startingLat = startingLat;
+		this.startingLon = startingLon;
 	}
 	
 	public int getMapZoom() {

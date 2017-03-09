@@ -3,23 +3,19 @@ package com.rcgd.fyp.domain.entities;
 import java.util.HashMap;
 import java.util.List;
 
-public class Graph implements GraphInterface {
-
-	private HashMap<VertexInterface, List<EdgeInterface>> adjacencyList;
-	
-	public Graph(HashMap<VertexInterface, List<EdgeInterface>> adjacencyList) {
-		this.adjacencyList = adjacencyList;
-	}
+public class Graph extends HashMap<VertexInterface, List<EdgeInterface>> implements GraphInterface {
 	
 	@Override
 	public List<EdgeInterface> getEdges(VertexInterface v) {
-		return this.adjacencyList.get(v);
+		return this.get(v);
 	}
 
 	@Override
 	public void addToGraph(VertexInterface v, EdgeInterface e) {
-		// TODO Auto-generated method stub
-		
+		List<EdgeInterface> edges = getEdges(v);
+		if(!edges.add(e)) {
+			//Print error
+		}
 	}
 
 }

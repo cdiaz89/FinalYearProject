@@ -14,7 +14,6 @@ import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.viewer.TileFactoryInfo;
 
 import com.rcgd.fyp.domain.entities.Coordinates;
-import com.rcgd.fyp.domain.entities.IntermediateVertex;
 import com.rcgd.fyp.domain.util.DistanceUtil;
 
 
@@ -48,20 +47,14 @@ public class Sample {
 		System.out.println(DistanceUtil.getHaversineDistance(36.12, -86.67, 33.94, -118.40));
 		*/
 		
-		LinkedHashSet<String> h = new LinkedHashSet<String>();
-		h.add("ne");
-	//	h.add("eqdd");
-		//h.add("fslfj");
-		//h.add("fsojdff");
+		HashMap<String,Double> h = new HashMap<String,Double>();
+		h.put("q", 2.3);
+		h.put("qq", 2.5);
+		h.put("q2", 2.3);
 		
-		Iterator it = h.iterator();
+		double qq = 2.4;
 		
-		System.out.println(it.next());
+		System.out.println(h.get("q") < qq);
 		
-		while (it.hasNext()) {
-			System.out.println("next()");
-			System.out.println(it.next());
-		}
-		System.out.println("end");
 	}
 }
