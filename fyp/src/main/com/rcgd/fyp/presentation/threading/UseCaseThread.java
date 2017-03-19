@@ -2,7 +2,7 @@ package main.com.rcgd.fyp.presentation.threading;
 
 import javax.swing.SwingWorker;
 
-import main.com.rcgd.fyp.domain.threading.WorkerThreadInterface;
+import main.com.rcgd.fyp.domain.threading.WorkerThread;
 import main.com.rcgd.fyp.domain.usecases.AbstractUseCase;
 
 /**
@@ -10,7 +10,7 @@ import main.com.rcgd.fyp.domain.usecases.AbstractUseCase;
  * @author rcgd
  *
  */
-public class WorkerThread extends SwingWorker<Void, Void> implements WorkerThreadInterface{
+public class UseCaseThread extends SwingWorker<Void, Void> implements WorkerThread{
 	
 	@SuppressWarnings("rawtypes")
 	AbstractUseCase usecase;
@@ -30,7 +30,7 @@ public class WorkerThread extends SwingWorker<Void, Void> implements WorkerThrea
 	
 	@Override
 	public void done() {
-		this.usecase.initiateCallBack();
+		usecase.initiateCallBack();
 	}
 
 }

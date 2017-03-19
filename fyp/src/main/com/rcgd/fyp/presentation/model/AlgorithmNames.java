@@ -1,4 +1,4 @@
-package main.com.rcgd.fyp.domain.entities;
+package main.com.rcgd.fyp.presentation.model;
 
 /**
  * http://www.java2s.com/Tutorials/Java/Swing_How_to/JComboBox/Fill_enum_to_JComboBox.htm
@@ -6,21 +6,18 @@ package main.com.rcgd.fyp.domain.entities;
  * @author rcgd
  *
  */
-public enum AlgorithmName {
+public enum AlgorithmNames {
 	UCS("Uniform Cost Search"), ASTAR("A* Search"), SA("Simulated Annealing");
 	
 	private String name;
 	
-	private AlgorithmName(String name) {
+	private AlgorithmNames(String name) {
 		this.name = name;
 	}
 	
-	public String getName() {
-		return name;
-	}
 	
 	@Override
 	public String toString() {
-		return "Name: " + name;
+		return name;
 	}
 }

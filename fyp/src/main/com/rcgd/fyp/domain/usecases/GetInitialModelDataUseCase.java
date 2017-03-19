@@ -1,35 +1,36 @@
 package main.com.rcgd.fyp.domain.usecases;
 
-import main.com.rcgd.fyp.domain.threading.WorkerThreadInterface;
+import main.com.rcgd.fyp.domain.repository.Repository;
+import main.com.rcgd.fyp.domain.threading.WorkerThread;
 
 public class GetInitialModelDataUseCase extends AbstractUseCase {
 	
-	//create repository
+	private Repository repository;
 	private GetInitialModelDataCallback callback;
 	
-	private String mapData;
-	private String listData;
+	private String modelData;
 
-	public GetInitialModelDataUseCase(
-			WorkerThreadInterface workerThread,
+	public GetInitialModelDataUseCase(WorkerThread workerThread,
+			Repository repository,
 			GetInitialModelDataCallback callback) {
 		super(workerThread);
+		this.repository = repository;
 		this.callback = callback;
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		modelData = repository.getModelDataAsString();
 		
 	}
 
 	@Override
 	public void initiateCallBack() {
-		if (mapData == null || listData == null) { 
+		if (modelData == null) { 
 			//not found in the repository
-			callback.noDataFound();
+			callback.noDataFound(); 
 		} else {
-			callback.onDataRetrieved(mapData, listData);
+			callback.onDataRetrieved(modelData);
 		}
 		
 	}

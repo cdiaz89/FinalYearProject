@@ -1,7 +1,7 @@
 package main.com.rcgd.fyp.domain.usecases;
 
 
-import main.com.rcgd.fyp.domain.threading.WorkerThreadInterface;
+import main.com.rcgd.fyp.domain.threading.WorkerThread;
 
 /**
  * 
@@ -11,9 +11,9 @@ import main.com.rcgd.fyp.domain.threading.WorkerThreadInterface;
 
 public abstract class AbstractUseCase {
 
-	protected WorkerThreadInterface workerThread;
+	protected WorkerThread workerThread;
 	
-	public AbstractUseCase(WorkerThreadInterface workerThread) {
+	public AbstractUseCase(WorkerThread workerThread) {
 		this.workerThread = workerThread;
 	}
 	

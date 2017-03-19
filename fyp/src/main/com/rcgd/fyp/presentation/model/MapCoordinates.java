@@ -1,7 +1,8 @@
 package main.com.rcgd.fyp.presentation.model;
 
 /**
- * Class that represents geo coordinates used in the map.
+ * Class that represents coordinates used in the model.
+ * Examples include initial coordinates, and user-defined locations.
  * @author rcgd
  *
  */

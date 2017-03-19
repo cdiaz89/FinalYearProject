@@ -8,7 +8,7 @@ import main.com.rcgd.fyp.domain.usecases.AbstractUseCase;
  * @author rcgd
  *
  */
-public interface WorkerThreadInterface {
+public interface WorkerThread {
 
 	void executeUseCase(AbstractUseCase usecase);
 }
